@@ -2,6 +2,7 @@ package com.codmind.orderapi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,7 @@ public class UserController {
 	@Autowired
 	private UserConverter userConverter;
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(value="/signup")
 	public ResponseEntity<WrapperResponse<UserDTO>> signup(@RequestBody SignupRequestDTO request){
 		User user = userService.createUser(userConverter.signup(request));
@@ -31,6 +33,7 @@ public class UserController {
 				.createResponse();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(value="/login")
 	public ResponseEntity<WrapperResponse<LoginResponseDTO>> login(@RequestBody LoginRequestDTO request){
 		LoginResponseDTO response =  userService.login(request);
