@@ -25,10 +25,11 @@ public class UserConverter extends AbstractConverter<User, UserDTO>{
 	}
 
 	public User signup(SignupRequestDTO dto) {
-		if(dto == null) return null;
-		return User.builder()
-				.username(dto.getUsername())
-				.password(dto.getPassword())
-				.build();
-	}
+        return User.builder()
+                .username(dto.getUsername())
+                .password(dto.getPassword())
+                .email(dto.getEmail())
+				.role(dto.getRole()) 
+                .build();
+    }
 }
