@@ -1,9 +1,12 @@
 package com.codmind.orderapi.services;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -120,5 +123,20 @@ public class UserService {
 		}
 		
 	}
+	
+	
+	public String generateResetToken(String email) {
+        User user = userRepo.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+
+        // Genera un token y guárdalo como se explicó anteriormente
+        String token = UUID.randomUUID().toString();
+        user.setResetToken(token);
+        user.setTokenExpiration(LocalDateTime.now().plusHours(1));
+        userRepo.save(user);
+
+        return token;
+    }
+
 	
 }

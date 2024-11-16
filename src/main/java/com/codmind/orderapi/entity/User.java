@@ -1,5 +1,7 @@
 package com.codmind.orderapi.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -33,6 +35,13 @@ public class User {
 
     @Column(name = "ROLE", length = 20, nullable = false) // Campo para el rol del usuario
     private String role;
+
+    @Column(name="RESET_TOKEN", length = 50)
+	private String resetToken;
+	
+	// Nuevo campo para la fecha de expiración del token
+	@Column(name="TOKEN_EXPIRATION")
+	private LocalDateTime tokenExpiration;
 
     @Override
     public int hashCode() {

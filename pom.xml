@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.codmain</groupId>
-	<artifactId>order-api</artifactId>
+	<artifactId>login-api</artifactId>
 	<version>1.0.0</version>
-	<name>order-api</name>
+	<name>login-api</name>
 	<description>API de ordenes</description>
 
 	<properties>
@@ -50,9 +50,9 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.5.0</version> <!-- Usa la versión más reciente disponible -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -84,6 +84,12 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		
 
 
 	</dependencies>

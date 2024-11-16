@@ -11,4 +11,7 @@ import com.codmind.orderapi.entity.User;
 public interface UserRespository extends JpaRepository<User, Long>{
 
 	public Optional<User> findByUsername(String username);
+
+	Optional<User> findByEmail(String email);
+	
 }
